@@ -9,9 +9,10 @@ use App\Models\Cart;
 class CartController extends Controller
 {
     //
-    public function index(){
+    public function index($id){
       $cart = DB::table('products')
       ->join('carts','products.id','carts.product_id')
+      ->where('carts.user_id', '=', $id)
       ->select('user_id','carts.id','products.image','products.name','products.price')
       ->get();
       return view('cart',['cart'=>$cart]);
@@ -19,7 +20,7 @@ class CartController extends Controller
     public function delete($id){
       $data = Cart::findOrFail($id);
       $data->delete();
-      return redirect('cart');
+      return redirect('cart/{id}');
     }
     public function store($pro_id,$usr_id){
       $cart= new Cart;

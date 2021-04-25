@@ -52,8 +52,8 @@
                     @foreach($categories as $item)
                     <div class="item">
                         <div class="categories_box">
-                            <a href="#">
-                                <img src="{{asset('images/'.$item->image)}}" alt="$item->image)">
+                            <a href="/category/{{ $item->slug }}">
+                                <img src="{{asset('images/'.$item->image)}}" style="height:115px;" alt="$item->image)">
                                 <span>{{$item->name}}</span>
                             </a>
                         </div>
@@ -95,13 +95,13 @@
                               <div class="item">
                                   <div class="product_wrap">
                                       <div class="product_img">
-                                          <a href="/product/{{ $value->slug }}">
-                                              <img src="{{asset('images/'.$value->image)}}" alt="newarrival">
-                                              <img class="product_hover_img" src="{{asset('images/'.$value->image)}}" alt="newarrival_hover">
+                                          <a href="/product/{{ $value->id }}">
+                                              <img src="{{asset('images/'.$value->image)}}" style="height: 260px;" alt="newarrival">
+                                              <img class="product_hover_img" src="{{asset('images/'.$value->image)}}" style="height: 260px;" alt="newarrival_hover">
                                           </a>
                                           <div class="product_action_box">
                                               <ul class="list_none pr_action_btn">
-                                                  <li class="add-to-cart"><a href="#"><i
+                                                  <li class="add-to-cart"><a href="/cart/store/{{$value->id}}/{{Auth::id()}}"><i
                                                               class="icon-basket-loaded"></i> Add To Cart</a></li>
                                                   <li><a href="#" class="popup-ajax"><i
                                                               class="icon-shuffle"></i></a></li>
@@ -112,7 +112,7 @@
                                           </div>
                                       </div>
                                       <div class="product_info">
-                                          <h6 class="product_title"><a href="/product/{{ $value->slug }}">{{ $value->name }}</a></h6>
+                                          <h6 class="product_title"><a href="/product/{{ $value->id }}">{{ $value->name }}</a></h6>
                                           <div class="product_price">
                                               <span class="price">{{$value->price}}</span>
                                               <del>$95.00</del>
@@ -141,13 +141,13 @@
                           <div class="item">
                               <div class="product_wrap">
                                   <div class="product_img">
-                                      <a href="/product/{{ $value->slug }}">
-                                          <img src="{{asset('images/'.$value->image)}}" alt="bestseller">
-                                          <img class="product_hover_img" src="{{asset('images/'.$value->image)}}" alt="bestseller_hover">
+                                      <a href="/product/{{ $value->id }}">
+                                          <img src="{{asset('images/'.$value->image)}}" style="height: 260px;" alt="bestseller">
+                                          <img class="product_hover_img" src="{{asset('images/'.$value->image)}}" style="height: 260px;" alt="bestseller_hover">
                                       </a>
                                       <div class="product_action_box">
                                           <ul class="list_none pr_action_btn">
-                                              <li class="add-to-cart"><a href="#"><i
+                                              <li class="add-to-cart"><a href="/cart/store/{{$value->id}}/{{Auth::id()}}"><i
                                                           class="icon-basket-loaded"></i> Add To Cart</a></li>
                                               <li><a href="#" class="popup-ajax"><i
                                                           class="icon-shuffle"></i></a></li>
@@ -158,7 +158,7 @@
                                       </div>
                                   </div>
                                   <div class="product_info">
-                                      <h6 class="product_title"><a href="/product/{{ $value->slug }}">{{ $value->name }}</a></h6>
+                                      <h6 class="product_title"><a href="/product/{{ $value->id }}">{{ $value->name }}</a></h6>
                                       <div class="product_price">
                                           <span class="price">{{$value->price}}</span>
                                           <del>$95.00</del>
@@ -205,12 +205,12 @@
             	<div class="blog_post blog_style2 box_shadow1">
                 	<div class="blog_img">
                         <a href="/blog-single/{{$value->id}}">
-                            <img src="{{asset('images/'.$value->image)}}" alt="el_blog_img1">
+                            <img src="{{asset('images/'.$value->image)}}" style="height: 350px;" alt="el_blog_img1">
                         </a>
                     </div>
                     <div class="blog_content bg-white">
                     	<div class="blog_text">
-                            <h5 class="blog_title"><a href="{{$value->id}}">{{ $value->title }}</a></h5>
+                            <h5 class="blog_title"><a href="/blog-single/{{$value->id}}">{{ $value->title }}</a></h5>
                             <ul class="list_none blog_meta">
                                 <li><a href="#"><i class="ti-calendar"></i> {{ $value->created_at }}</a></li>
                                 <li><a href="#"><i class="ti-user"></i> {{ $value->author }}</a></li>

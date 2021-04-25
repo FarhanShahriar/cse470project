@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,10 @@ class CategoryController extends Controller
       $categories = Category::all();
       return view('admin.categories',['categories'=>$categories]);
     }
-
+    public function showslug($slug){
+      $details = Product::where('slug', $slug)->get();
+      return view('category-details',['details'=>$details]);
+    }
     public function save(Request $r){
       $cat = new Category;
       $cat->name=$r->name;

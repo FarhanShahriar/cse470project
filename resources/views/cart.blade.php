@@ -43,7 +43,7 @@
                         	@foreach($cart as $value)
                             @if($value->user_id==Auth::id())
                             <tr>
-                                <td class="product-thumbnail"><a href="#"><img src="{{$value->image}}" alt="product1"></a></td>
+                                <td class="product-thumbnail"><a href="#"><img src="{{asset('images/'.$value->image)}}" style="height: 100px; width: 100px;" alt="product1"></a></td>
                                 <td class="product-name" data-title="Product">{{$value->name}}</a></td>
                                 <td class="product-price" data-title="Price">${{$value->price}}</td>
                                 <td class="product-remove" data-title="Remove"><a href="/cart/delete/{{$value->id}}"><i class="ti-close"></i></a></td>
@@ -86,7 +86,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="/checkout" class="btn btn-fill-out">Proceed To CheckOut</a>
+                    <a href="/checkout/{{Auth::id()}}/{{$cart->sum('price')+50}}" class="btn btn-fill-out">Proceed To CheckOut</a>
                 </div>
             </div>
         </div>

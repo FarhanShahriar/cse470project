@@ -75,10 +75,14 @@
                           <li><a href="{{ route('register') }}" class="nav-link"><i class="linearicons-users-plus"></i></a></li>
                       @endif
                   @endif
+                  <?php $cart = Illuminate\Support\Facades\DB::table('products')
+                  ->join('carts','products.id','carts.product_id')
+                  ->select('user_id','products.name','products.price')
+                  ->get();?>
                     <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><span class="amount"><span class="currency_symbol">$</span>Cart</span></a>
                         <div class="cart_box cart_right dropdown-menu dropdown-menu-right">
                             <div class="cart_footer">
-                                <p class="cart_buttons"><a href="/cart" class="btn btn-fill-line view-cart">View Cart</a><a href="/checkout" class="btn btn-fill-out checkout">Checkout</a></p>
+                                <p class="cart_buttons"><a href="/cart/{{Auth::id()}}" class="btn btn-fill-line view-cart">View Cart</a><a href="/checkout/{{Auth::id()}}/{{$cart->sum('price')+50}}" class="btn btn-fill-out checkout">Checkout</a></p>
                             </div>
                         </div>
                     </li>
@@ -86,7 +90,7 @@
             </div>
         </div>
     </div>
-    <?php $categories1 = App\Models\Category::where('parent_id',1)->get(); ?>
+    <?php $categories1 = App\Models\Category::where('parent_id',3)->get(); ?>
     <?php $categories2 = App\Models\Category::where('parent_id',2)->get(); ?>
 
     <div class="bottom_header dark_skin main_menu_uppercase border-top">
@@ -108,7 +112,7 @@
                                                     <li class="mega-menu-col col-lg-6">
                                                         <ul>
                                                             @foreach($categories1 as $value)
-                                                              <li><a class="dropdown-item nav-link nav_item" href="#">{{$value->name}}</a></li>
+                                                              <li><a class="dropdown-item nav-link nav_item" href="/category/{{ $value->slug }}">{{$value->name}}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     </li>
@@ -126,7 +130,7 @@
                                                     <li class="mega-menu-col col-lg-6">
                                                         <ul>
                                                           @foreach($categories2 as $value)
-                                                            <li><a class="dropdown-item nav-link nav_item" href="#">{{$value->name}}</a></li>
+                                                            <li><a class="dropdown-item nav-link nav_item" href="/category/{{ $value->slug }}">{{$value->name}}</a></li>
                                                           @endforeach
                                                         </ul>
                                                     </li>

@@ -27,6 +27,8 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/shop', [ProductController::class,'index']);
 Route::get('/product-detail/{id}', [ProductController::class,'show']);
 
+Route::get('/category/{slug}', [CategoryController::class,'showslug']);
+
 Route::get('/blog', [BlogController::class,'index']);
 Route::get('/blog-single/{id}', [BlogController::class,'show']);
 
@@ -42,9 +44,9 @@ Route::get('/contact', function () {
 //For USER
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
   Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
-  Route::get('/checkout', [OrderController::class,'index']);
+  Route::get('/checkout/{id}/{price}', [OrderController::class,'index']);
   Route::post('/address/{id}/{price}', [OrderController::class,'save']);
-  Route::get('/cart', [CartController::class,'index']);
+  Route::get('/cart/{id}', [CartController::class,'index']);
   Route::get('/cart/delete/{id}', [CartController::class,'delete']);
   Route::get('/cart/store/{pro_id}/{usr_id}', [CartController::class,'store']);
   Route::get('/order-complete', function () {

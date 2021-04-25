@@ -50,7 +50,7 @@
                         <div class="product">
                             <div class="product_img">
                                 <a href="/product-detail/{{$value->id}}">
-                                    <img src="{{asset('images/'.$value->image)}}" alt="product_img1">
+                                    <img src="{{asset('images/'.$value->image)}}" style="height: 260px; width: 100%;" alt="product_img1">
                                 </a>
                                 <div class="product_action_box">
                                     <ul class="list_none pr_action_btn">

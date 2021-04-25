@@ -100,10 +100,13 @@ text-decoration: underline;
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th>Id</th>
           <th>User Id</th>
-          <th>Shipping Id</th>
-          <th>Status</th>
+          <th>House No</th>
+          <th>Thana</th>
+          <th>Postal Code</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>Phone Number</th>
           <th>Price</th>
         </tr>
       </thead>
@@ -114,10 +117,13 @@ text-decoration: underline;
       <tbody>
         @foreach($orders as $order)
         <tr>
-          <td>{{$order->id}}</td>
           <td>{{$order->user_id}}</td>
-          <td>{{$order->shipping_id}}</td>
-          <td>{{$order->status}}</td>
+          <td>{{$order->house_no}}</td>
+          <td>{{$order->thana}}</td>
+          <td>{{$order->postal_code}}</td>
+          <td>{{$order->city}}</td>
+          <td>{{$order->country}}</td>
+          <td>{{$order->phone_number}}</td>
           <td>{{$order->price}}</td>
         </tr>
         @endforeach

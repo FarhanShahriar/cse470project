@@ -31,10 +31,10 @@
             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
               <div class="product-image">
                     <div class="product_img_box">
-                        <img id="product_img" src='{{$details->image}}' data-zoom-image="{{$details->image}}" alt="product_img1" />
-                        <a href="#" class="product_img_zoom" title="Zoom">
+                        <img id="product_img" src='{{asset('images/'.$details->image)}}' data-zoom-image="{{asset('images/'.$details->image)}}" alt="product_img1" />
+                        <!-- <a href="#" class="product_img_zoom" title="Zoom">
                             <span class="linearicons-zoom-in"></span>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>

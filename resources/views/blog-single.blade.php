@@ -36,7 +36,7 @@
                         <li><a href="#"><i class="ti-user"></i> {{$blogitem->author}}</a></li>
                     </ul>
                     <div class="blog_img">
-                        <img src="{{$blogitem->image}}" alt="blog_img1">
+                        <img src="{{asset('images/'.$blogitem->image)}}" style="height:600px; width:100%;" alt="blog_img1">
                     </div>
                     <div class="blog_content">
                         <div class="blog_text">
