@@ -30,7 +30,7 @@ class OrderController extends Controller
     }
     public function save(Request $r, $id, $price){
       $datas = Cart::all()->where('user_id', $id);
-      foreach($datas as $org) 
+      foreach($datas as $org)
       {
           $org->delete();
       }
